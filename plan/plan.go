@@ -200,6 +200,10 @@ func (p *Plan) shouldUpdateProviderSpecific(desired, current *endpoint.Endpoint)
 				continue
 			}
 
+			if c.Name == "alias" {
+				continue
+			}
+
 			if d, ok := desiredProperties[c.Name]; ok {
 				if p.PropertyComparator != nil {
 					if !p.PropertyComparator(c.Name, c.Value, d.Value) {
